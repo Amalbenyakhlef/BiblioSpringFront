@@ -1,0 +1,50 @@
+<body>
+    <mat-card>
+        <b><span>Dashboard</span></b>
+    </mat-card>
+    <br>
+    <div class="row" >
+
+        <div class="column">
+            <div class="card">
+                <div class="container">
+                    <h2 class="title">Total Devoirs:</h2>
+                    <h1 class="title">{{data?.category}}</h1>
+                    <p><button class="button" [routerLink]="['/biblio/devoir']">View Devoirs</button></p>
+                </div>
+            </div>
+        </div>
+
+    
+    
+        <div class="column">
+            <div class="card">
+                <div class="container">
+                    <h2 class="title">Total Livres:</h2>
+                    <h1 class="title">{{data?.Books}}</h1>
+                    <p><button class="button" [routerLink]="['/biblio/Livres']">View Livres</button></p>
+                </div>
+            </div>
+        </div>
+
+    
+    
+        <div class="column">
+            <div class="card">
+                <div class="container">
+                    <h2 class="title">Total Emprunts :</h2>
+                    <h1 class="title">{{data?.Emprunts}}</h1>
+                    <p><button class="button" [routerLink]="['/biblio/Emprunts']">View Emprunts</button></p>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+    </div>
+    
+</body>

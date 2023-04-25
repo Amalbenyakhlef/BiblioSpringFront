@@ -1,0 +1,94 @@
+<mat-card>
+  <b
+    ><span><strong>Manage Devoir</strong></span></b
+  >
+  <button
+    mat-flat-button
+    color="primary"
+    class="float-right"
+    (click)="handleAddAction()">
+    <mat-icon>add_circle</mat-icon> Add devoir
+  </button>
+</mat-card>
+<hr/>
+
+<mat-card>
+  <mat-form-field appearance="standard">
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" #input />
+  </mat-form-field>
+</mat-card>
+<hr /> 
+
+<div>
+  <button mat-flat-button>
+
+  </button>
+</div>
+
+
+
+<div class="responsive_table" >
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="matiere">
+      <th mat-header-cell *matHeaderCellDef>Matiere</th>
+      <td mat-cell *matCellDef="let element">{{element.matiere}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="date_dev">
+      <th mat-header-cell *matHeaderCellDef>date_dev</th>
+      <td mat-cell *matCellDef="let element">{{element.date_dev}}</td>
+    </ng-container>
+    <ng-container matColumnDef="dispo_correc">
+      <th mat-header-cell *matHeaderCellDef>dispo_correc</th>
+      <td mat-cell *matCellDef="let element">{{element.dispo_correc}}</td>
+    </ng-container>
+    <ng-container matColumnDef="session">
+      <th mat-header-cell *matHeaderCellDef>session</th>
+      <td mat-cell *matCellDef="let element">{{element.session}}</td>
+    </ng-container>
+    <ng-container matColumnDef="specialite">
+      <th mat-header-cell *matHeaderCellDef>specialite</th>
+      <td mat-cell *matCellDef="let element">{{element.specialite}}</td>
+    </ng-container>
+    <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef>type</th>
+      <td mat-cell *matCellDef="let element">{{element.type}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="edit" >
+      <th mat-header-cell *matHeaderCellDef>Action</th>
+      <td mat-cell *matCellDef="let element" class="action-link">
+        <button
+          mat-icon-button
+          color="primary"
+          matTooltip="Edit"
+          (click)="handleEditAction(element)"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button
+        mat-icon-button
+        color="primary"
+        matTooltip="Emprunt"
+        (click)="handleEmpruntAction(element)"
+      >
+        <mat-icon>book</mat-icon>
+      </button>
+      <button
+      mat-icon-button
+      color="primary"
+      matTooltip="delete"
+      (click)="handleDeleteAction(element)"
+    >
+      <mat-icon>delete</mat-icon>
+    </button>
+    
+      </td>
+    </ng-container>
+    
+    <tr mat-header-row *matHeaderRowDef="displayedColumns;sticky:true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div> 

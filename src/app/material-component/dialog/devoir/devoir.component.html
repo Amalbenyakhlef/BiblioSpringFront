@@ -1,0 +1,67 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row fxLayout="row">
+        <span>{{dialogData.action}} Devoir</span>
+        <span class="spacer"></span>
+        <button class="mat-dialog-close" mat-icon-button mat-dialog-close>
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-toolbar-row>
+</mat-toolbar> 
+
+
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="devoirForm">
+        <div fxFlex fxLayout="Column">
+            <div fxLayout="row wrap">
+                <mat-form-field appearance="standard" fxFlex>
+                    <mat-label>date_dev</mat-label>
+                    <input matInput formControlName="date_dev" required>
+                    <mat-error *ngIf="devoirForm.controls.date_dev.touched && devoirForm.controls.date_dev.invalid">
+                        <span *ngIf="devoirForm.controls.date_dev.errors.required">This Filed is mandatory.</span>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="standard" fxFlex>
+                    <mat-label>dispo_correc</mat-label>
+                    <input matInput formControlName="dispo_correc" required>
+                    <mat-error *ngIf="devoirForm.controls.dispo_correc.touched && devoirForm.controls.dispo_correc.invalid">
+                        <span *ngIf="devoirForm.controls.dispo_correc.errors.required">This Filed is mandatory.</span>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="standard" fxFlex>
+                    <mat-label>matiere</mat-label>
+                    <input matInput formControlName="matiere" required>
+                    <mat-error *ngIf="devoirForm.controls.matiere.touched && devoirForm.controls.matiere.invalid">
+                        <span *ngIf="devoirForm.controls.matiere.errors.required">This Filed is mandatory.</span>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="standard" fxFlex>
+                    <mat-label>session</mat-label>
+                    <input matInput formControlName="session" required>
+                    <mat-error *ngIf="devoirForm.controls.session.touched && devoirForm.controls.session.invalid">
+                        <span *ngIf="devoirForm.controls.session.errors.required">This Filed is mandatory.</span>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="standard" fxFlex>
+                    <mat-label>specialite</mat-label>
+                    <input matInput formControlName="specialite" required>
+                    <mat-error *ngIf="devoirForm.controls.specialite.touched && devoirForm.controls.specialite.invalid">
+                        <span *ngIf="devoirForm.controls.specialite.errors.required">This Filed is mandatory.</span>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="standard" fxFlex>
+                    <mat-label>type</mat-label>
+                    <input matInput formControlName="type" required>
+                    <mat-error *ngIf="devoirForm.controls.type.touched && devoirForm.controls.type.invalid">
+                        <span *ngIf="devoirForm.controls.type.errors.required">This Filed is mandatory.</span>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-raised-button color="primary" type="submit" (click)="handleSubmit()" [disabled]="!(devoirForm.valid && devoirForm.dirty)"> 
+        <mat-icon>save</mat-icon> {{action}}
+    </button>
+    <button mat-raised-button color="warn" mat-dialog-close> <mat-icon>cancel</mat-icon>Close</button>
+</mat-dialog-actions>  

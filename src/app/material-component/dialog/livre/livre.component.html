@@ -1,0 +1,71 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row fxLayout="row">
+        <span>{{dialogData.action}} Livre</span>
+        <span class="spacer"></span>
+        <button class="mat-dialog-close" mat-icon-button mat-dialog-close>
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-toolbar-row>
+</mat-toolbar> 
+
+
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="livreForm">
+        <div fxFlex fxLayout="Column">
+            <div fxLayout="row wrap">
+                
+                <mat-form-field appearance="standard" fxFlex>
+                    <mat-label>auteur</mat-label>
+                    <input matInput formControlName="auteur" required>
+                    <mat-error *ngIf="livreForm.controls.auteur.touched && livreForm.controls.auteur.invalid">
+                        <span *ngIf="livreForm.controls.auteur.errors.required">This Filed is mandatory.</span>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="standard" fxFlex>
+                    <mat-label>categorie</mat-label>
+                    <mat-select formControlName="categorie">
+                        <mat-option *ngFor="let c of categorys" [value]="c">
+                            {{c}}
+                        </mat-option>
+                    </mat-select>
+                
+                </mat-form-field>
+                <mat-form-field appearance="standard" fxFlex>
+                    <mat-label>disponnible</mat-label>
+                    <input matInput formControlName="disponnible" required>
+                    <mat-error *ngIf="livreForm.controls.disponnible.touched && livreForm.controls.disponnible.invalid">
+                        <span *ngIf="livreForm.controls.disponnible.errors.required">This Filed is mandatory.</span>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="standard" fxFlex>
+                    <mat-label>nb_exemplaire</mat-label>
+                    <input matInput formControlName="nb_exemplaire" required>
+                    <mat-error *ngIf="livreForm.controls.nb_exemplaire.touched && livreForm.controls.nb_exemplaire.invalid">
+                        <span *ngIf="livreForm.controls.nb_exemplaire.errors.required">This Filed is mandatory.</span>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="standard" fxFlex>
+                    <mat-label>titre</mat-label>
+                    <input matInput formControlName="titre" required>
+                    <mat-error *ngIf="livreForm.controls.titre.touched && livreForm.controls.titre.invalid">
+                        <span *ngIf="livreForm.controls.titre.errors.required">This Filed is mandatory.</span>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="standard" fxFlex>
+                    <mat-label>nb_emprunts</mat-label>
+                    <input matInput formControlName="nb_emprunts" required>
+                    <mat-error *ngIf="livreForm.controls.nb_emprunts.touched && livreForm.controls.nb_emprunts.invalid">
+                        <span *ngIf="livreForm.controls.nb_emprunts.errors.required">This Filed is mandatory.</span>
+                    </mat-error>
+                </mat-form-field>
+                
+            </div>
+        </div>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-raised-button color="primary" type="submit" (click)="handleSubmit()" [disabled]="!(livreForm.valid && livreForm.dirty)"> 
+        <mat-icon>save</mat-icon> {{action}}
+    </button>
+    <button mat-raised-button color="warn" mat-dialog-close> <mat-icon>cancel</mat-icon>Close</button>
+</mat-dialog-actions>  

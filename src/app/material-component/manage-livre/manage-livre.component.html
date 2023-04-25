@@ -1,0 +1,87 @@
+<mat-card>
+    <b
+      ><span><strong>Manage Livres</strong></span></b
+    >
+    <button
+      mat-flat-button
+      color="primary"
+      class="float-right"
+      (click)="handleAddAction()">
+      <mat-icon>add_circle</mat-icon> Add livre
+    </button>
+  </mat-card>
+  <hr/>
+  
+  <mat-card>
+    <mat-form-field appearance="standard">
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" #input />
+    </mat-form-field>
+  </mat-card>
+  <hr /> 
+  
+  
+  
+  <div class="responsive_table" >
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  
+      <ng-container matColumnDef="auteur">
+        <th mat-header-cell *matHeaderCellDef>auteur</th>
+        <td mat-cell *matCellDef="let element">{{element.auteur}}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="categorie">
+        <th mat-header-cell *matHeaderCellDef>categorie</th>
+        <td mat-cell *matCellDef="let element">{{element.categorie}}</td>
+      </ng-container>
+      <ng-container matColumnDef="disponnible">
+        <th mat-header-cell *matHeaderCellDef>disponnible</th>
+        <td mat-cell *matCellDef="let element">{{element.disponnible}}</td>
+      </ng-container>
+      <ng-container matColumnDef="nb_exemplaire">
+        <th mat-header-cell *matHeaderCellDef>nb_exemplaire</th>
+        <td mat-cell *matCellDef="let element">{{element.nb_exemplaire}}</td>
+      </ng-container>
+      <ng-container matColumnDef="titre">
+        <th mat-header-cell *matHeaderCellDef>titre</th>
+        <td mat-cell *matCellDef="let element">{{element.titre}}</td>
+      </ng-container>
+      <ng-container matColumnDef="nb_emprunts">
+        <th mat-header-cell *matHeaderCellDef>nb_emprunts</th>
+        <td mat-cell *matCellDef="let element">{{element.nb_emprunts}}</td>
+      </ng-container>
+  
+      
+      
+      <ng-container matColumnDef="edit" >
+        <th mat-header-cell *matHeaderCellDef>Action</th>
+        <td mat-cell *matCellDef="let element" class="action-link">
+          <button
+            mat-icon-button
+            color="primary"
+            matTooltip="Edit"
+            (click)="handleEditAction(element)"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+         <button
+          mat-icon-button
+          color="primary"
+          matTooltip="Delete"
+          (click)="handleDeleteAction(element)"
+        >
+          <mat-icon>delete</mat-icon>
+        </button> 
+
+        <!-- not yet -->
+        <mat-slide-toggle (change)="onChange($event.checked,element.id_livre)"
+        matTooltip="Disponnible or not Disponnible Livre" [checked]="element.disponnible">
+        </mat-slide-toggle>
+
+        </td>
+      </ng-container>  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns;sticky:true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>  
+ 
